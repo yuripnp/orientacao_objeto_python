@@ -1,10 +1,10 @@
 class Restaurante:
     restaurantes = []
     def __init__(self, nome, categoria):
-        self.nome = nome
-        self.categoria = categoria
+        self._nome = nome.title()
+        self._categoria = categoria.upper()
         self._ativo = False
-        self.menu = []
+        self._menu = []
         Restaurante.restaurantes.append(self)
 
     def __str__(self):
@@ -14,18 +14,22 @@ class Restaurante:
     def ativo(self):
         return '☒' if self._ativo else '☐'
     
-    def adicionar_item_menu(self, item):
-        self.menu.append(item)
+    def alternar_ativo(self):
+        self._ativo = not self._ativo
     
-    def listar_restaurantes():
-        for restaurante in Restaurante.restaurantes:
-            print(f"Nome: {restaurante.nome.ljust(10)}, Categoria: {restaurante.categoria} - Ativo: {restaurante.ativo}")
+    def adicionar_item_menu(self, item):
+        self._menu.append(item)
+    
+    @classmethod
+    def listar_restaurantes(cls):
+        for restaurante in cls.restaurantes:
+            print(f"Nome: {restaurante._nome.ljust(10)}, Categoria: {restaurante._categoria} - Ativo: {restaurante.ativo}")
 
-restaurante = Restaurante("La Mafia", "Italiana")
+restaurante = Restaurante("la Mafia", "Italiana")
+restaurante.alternar_ativo()
 restaurante.adicionar_item_menu("Pizza")
 restaurante.adicionar_item_menu("Macarrão")
-Restaurante.listar_restaurantes()
-novoRestaurante = Restaurante("Sushi", "Japonesa")
+novoRestaurante = Restaurante("sushi", "Japonesa")
 novoRestaurante.adicionar_item_menu("Sushi")
 Restaurante.listar_restaurantes()
 
