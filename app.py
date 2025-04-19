@@ -6,6 +6,8 @@ restaurante_brasileira = Restaurante("Brasileira", "Brasileira")
 
 restaurante_brasileira.receber_avaliacao("João", 5, "Muito bom")
 restaurante_brasileira.receber_avaliacao("Maria", 4, "Bom")
+
+print(restaurante_brasileira.media_avaliacoes)
 restaurante_praca.alternar_ativo()
 
 Restaurante.listar_restaurantes()
